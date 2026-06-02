@@ -1,0 +1,55 @@
+<% layout("/layouts/boilerplate") %>
+  <div class="row">
+    <div class="col-8 offset-2" >
+    <br>
+    <h2>Edit Listing with id : <%= listing._id %></h2>
+    <form method="post" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <textarea name="listing[title]" type="text" class="form-control" required><%= listing.title %></textarea>
+        <div class="valid-feedback">Title Looks Good</div>
+        <div class="invalid-feedback">Title should be valid</div>
+      </div>
+      
+      <div class="mb-3">
+        <label for="description" class="form-label" >Description</label>
+        <textarea name="listing[description]"  type="text" class="form-control" required><%= listing.description %></textarea>
+        <div class="valid-feedback">Description Looks Good</div>
+        <div class="invalid-feedback">Description should be valid</div>
+      </div>
+      
+      <div class="mb-3">
+        Original Listing Image <br>
+        <img src="<%=orgurl %>" class="img-thumbnail" style="width: 300px; height: 200px; object-fit: cover";
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label" >Upload New Image</label>
+        <input name="listing[image]" type="file" class="form-control" >
+      </div>
+      
+      <div class="mb-3">
+        <label for="price" class="form-label" >Price</label>
+        <textarea oninput="this.value = this.value.replace(/\D+/g, '')"  name="listing[price]" type="number" class="form-control" required><%= listing.price %></textarea>
+        <div class="invalid-feedback">Price should be valid</div>
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4" >
+          <label for="location" class="form-label"> Location</label>
+          <textarea name="listing[location]" type="text" class="form-control" required><%= listing.location %></textarea>
+          <div class="invalid-feedback">Location should be valid</div>
+        </div>
+        
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country</label>
+          <textarea name="listing[country]" type="text" class="form-control" required><%= listing.country %></textarea>
+          <div class="invalid-feedback">Country should be valid</div>
+        </div>
+      </div>
+      
+      <button class="btn btn-dark add-btn mt-3">Submit</button>
+    </form>
+  <br>
+  </div>
+</div>
