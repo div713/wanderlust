@@ -21,6 +21,8 @@ wrapAsync(listingcontroller.postnew)); //new post
 
 //new route
 router.get("/new",isLoggedin, listingcontroller.getnew);
+//mylisting
+router.get("/mylistings", isLoggedin,wrapAsync(listingcontroller.mylisting));
 
 router
 .route("/:id")
@@ -31,5 +33,7 @@ router
 // validateListing,
 //edit route
 router.get("/:id/edit",isLoggedin,isOwner,wrapAsync(listingcontroller.getedit));
+
+
 
 module.exports = router;
